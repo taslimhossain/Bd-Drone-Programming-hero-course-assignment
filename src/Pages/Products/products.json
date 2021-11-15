@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "title": "Mavic 2 Pro",
+        "price": 550,
+        "range": "4.5 km",
+        "flightime": "31 Minutes",
+        "photo": "images/product/1.jpg",
+        "description": "Awesome product! River stingray giant danio horn shark flabby whalefish golden dojo. Black angelfish silver carp electric stargazer Atlantic saury ground shark hammerhead shark yellowtail kingfish cow shark Spanish mackerel. Taimen mackerel shark bigmouth buffalo white shark blue gourami paperbone pilot fish anglerfish, electric ray wahoo."
+    },
+    {
+        "id": 2,
+        "title": "Mavic Pro Gold",
+        "price": 650,
+        "range": "4.5 km",
+        "flightime": "51 Minutes",
+        "photo": "images/product/2.jpg",
+        "description": "Awesome product! River stingray giant danio horn shark flabby whalefish golden dojo. Black angelfish silver carp electric stargazer Atlantic saury ground shark hammerhead shark yellowtail kingfish cow shark Spanish mackerel. Taimen mackerel shark bigmouth buffalo white shark blue gourami paperbone pilot fish anglerfish, electric ray wahoo."
+    },
+    {
+        "id": 3,
+        "title": "Mavic Pro Platinum",
+        "price": 250,
+        "range": "2 km",
+        "flightime": "25 Minutes",
+        "photo": "images/product/3.jpg",
+        "description": "Awesome product! River stingray giant danio horn shark flabby whalefish golden dojo. Black angelfish silver carp electric stargazer Atlantic saury ground shark hammerhead shark yellowtail kingfish cow shark Spanish mackerel. Taimen mackerel shark bigmouth buffalo white shark blue gourami paperbone pilot fish anglerfish, electric ray wahoo."
+    },
+    {
+        "id": 4,
+        "title": "DJI Inspire 2",
+        "price": 950,
+        "range": "6 km",
+        "flightime": "50 Minutes",
+        "photo": "images/product/4.jpg",
+        "description": "Awesome product! River stingray giant danio horn shark flabby whalefish golden dojo. Black angelfish silver carp electric stargazer Atlantic saury ground shark hammerhead shark yellowtail kingfish cow shark Spanish mackerel. Taimen mackerel shark bigmouth buffalo white shark blue gourami paperbone pilot fish anglerfish, electric ray wahoo."
+    },
+    {
+        "id": 5,
+        "title": "DJI Mavic 2 Pro",
+        "price": 540,
+        "range": "4 km",
+        "flightime": "35 Minutes",
+        "photo": "images/product/5.jpg",
+        "description": "Awesome product! River stingray giant danio horn shark flabby whalefish golden dojo. Black angelfish silver carp electric stargazer Atlantic saury ground shark hammerhead shark yellowtail kingfish cow shark Spanish mackerel. Taimen mackerel shark bigmouth buffalo white shark blue gourami paperbone pilot fish anglerfish, electric ray wahoo."
+    },
+    {
+        "id": 6,
+        "title": "DJI Phantom 4 Pro V2.0",
+        "price": 650,
+        "range": "4 km",
+        "flightime": "55 Minutes",
+        "photo": "images/product/6.jpg",
+        "description": "Awesome product! River stingray giant danio horn shark flabby whalefish golden dojo. Black angelfish silver carp electric stargazer Atlantic saury ground shark hammerhead shark yellowtail kingfish cow shark Spanish mackerel. Taimen mackerel shark bigmouth buffalo white shark blue gourami paperbone pilot fish anglerfish, electric ray wahoo."
+    }
+  
+]

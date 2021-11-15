@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+:root{
+  --primary: #d72323;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Commons css */
+.bg-primary {
+  background-color: var(--primary) !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.btn-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+.text-primary {
+  color: var(--primary) !important;
+}
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* header-area */
+.header-top {
+  position: absolute;
+  width: 100%;
+}
+.ltx-drone img {
+    top: 0;
+    position: relative;
+    animation-name: floating_item;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
   }
+@keyframes floating_item {
+    0% {
+      top: 0px;
+    }
+    50% {
+      top: 20px;
+    }
+    100% {
+      top: 0px;
+    }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Review section */
+.review-photo {
+  width:80px;
 }
