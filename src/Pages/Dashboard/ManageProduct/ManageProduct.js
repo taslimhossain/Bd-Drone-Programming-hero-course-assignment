@@ -17,7 +17,7 @@ const ManageProduct = () => {
             .then(function (res) {
                 if( res.data.acknowledged ){
                     document.getElementById(`product_${id}`).remove();
-                    alert('Your oder submited succeffully')
+                    alert('Product has been delete succeffully')
                 }
             })
             .catch(function (error) {
