@@ -14,7 +14,7 @@ export const GetDrones = () => {
         }
         fetchProduct();
 
-    }, [])
+    }, [url])
 
     return (dbproduct)
 }
@@ -31,7 +31,7 @@ export const GetDrone = (id) => {
         }
         fetchDrone();
 
-    }, [id])
+    }, [id, url])
 
     return (dbDrone)
 }
@@ -48,7 +48,29 @@ export const GetReview = () => {
         }
         fetchReview();
 
-    }, [])
+    }, [url])
 
     return (reviews)
+}
+
+export const GetOrder = (userEmail = '') => {
+
+    const [orders, setOrders] = useState('')
+    const url = apiurl();
+
+    useEffect(() => {
+    
+        const fetchOrders = async () => {
+            const { data } = await axios.get(`${url}/order`, {
+                params: {
+                  email: userEmail
+                }
+              })
+            setOrders(data)
+        }
+        fetchOrders();
+
+    }, [url, userEmail])
+
+    return (orders)
 }

@@ -1,9 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import CircularProgress from '../../../components/CircularProgress';
 import { GetDrones } from '../../../hooks/action';
-import apiurl from '../../../hooks/apiUrl';
 import ProductCard from '../../Products/ProductCard'
-import products from '../../Products/products.json'
 
 const Products = () => {
 
@@ -29,7 +27,7 @@ const Products = () => {
                                     <ProductCard product= {product} />
                                 </div>
                             )) :
-                            <p>Loading...</p>
+                            <CircularProgress />
                         }
                     </div>
                 </div>

@@ -6,7 +6,6 @@ import TitleBar from '../../components/TitleBar';
 import { GetDrone } from '../../hooks/action';
 import apiurl from '../../hooks/apiUrl';
 import useAuth from '../../hooks/useAuth';
-import product from '../Products/products.json'
 
 const Checkout = () => {
     const {id} = useParams();
@@ -16,14 +15,15 @@ const Checkout = () => {
 
     const [orderData, setOrderData] = useState({
         'firstname' : user?.displayName ? user.displayName : '',
-        'lastname'     : '',
-        'email'     : user?.email ? user.email : '',
-        'mobile'     : '',
-        'address'     : '',
-        'address_2'     : '',
+        'lastname'  : '',
+        'email'     : user?.email ? user.email             : '',
+        'mobile'    : '',
+        'address'   : '',
+        'address_2' : '',
         'state'     : '',
-        'zipcode'     : '',
-        'country'     : '',
+        'zipcode'   : '',
+        'country'   : '',
+        'status'    : 'pending',
     });
     const [popup, setPopupData] = useState({'show':false});
 

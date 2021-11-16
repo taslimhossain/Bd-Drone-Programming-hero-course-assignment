@@ -1,12 +1,14 @@
 import React from 'react'
+import CircularProgress from '../../components/CircularProgress'
 import TitleBar from '../../components/TitleBar'
 import { GetDrones } from '../../hooks/action'
 import ProductCard from './ProductCard'
-import products from './products.json'
+
 
 const Products = () => {
- //   console.log(products)
- const products = GetDrones();
+
+    const products = GetDrones();
+    
     return (
         <>
             <TitleBar title="Products" />
@@ -19,7 +21,7 @@ const Products = () => {
                                 <ProductCard product= {product} />
                             </div>
                         )) :
-                        <p>Loading...</p>
+                        <CircularProgress />
                     }
                     </div>
                 </div>

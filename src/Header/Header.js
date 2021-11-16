@@ -20,10 +20,11 @@ const Header = () => {
                         <li className="nav-item">
                             <Link to="/explore" className="nav-link">Explore</Link>
                         </li>
+                        {
+                            ! user?.email && <li className="nav-item">
+                            <Link to="/register" className="nav-link">Register</Link></li>
+                        }
                         
-                        <li className="nav-item">
-                            <Link to="/register" className="nav-link">Register</Link>
-                        </li>
                         {
                             user?.email ?
                             <>

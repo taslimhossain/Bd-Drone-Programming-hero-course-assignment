@@ -74,10 +74,12 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
+        if( user.email ){
         fetch(`${serverUrl}/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
-    }, [user.email])
+        }
+    }, [user.email, serverUrl])
 
     const logout = () => {
         setIsLoading(true);

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Banner = () => {
     return (
@@ -13,7 +14,7 @@ const Banner = () => {
                     <h1 className="display-5 fw-bold lh-1 mb-3 my-3 text-white lh-sm">The Ultraportable <br/> Drone for the Best Video</h1>
                     <p className="lead text-light">The ultraportable Copter features high-end flight performance and functionality for limitless exploration</p>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="button" className="btn btn-outline-light btn-lg px-4 mt-5">View products</button>
+                        <Link to ="/explore" className="btn btn-outline-light btn-lg px-4 mt-5">View products</Link>
                     </div>
                 </div>
                 </div>

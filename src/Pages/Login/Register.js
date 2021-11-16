@@ -36,6 +36,10 @@ const Register = () => {
 
         registerUser(regData.email, regData.password, regData.name, history);
 
+        if(authError){
+            alert(authError);
+        }
+
         // setPopupData({
         //     'show':true,
         //     'message': 'Login successfully'

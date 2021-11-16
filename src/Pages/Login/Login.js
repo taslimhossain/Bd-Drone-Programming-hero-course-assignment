@@ -9,7 +9,6 @@ const Login = () => {
 
     const [loginData, setLoginData] = useState({});
     const [popup, setPopupData] = useState({'show':false});
-
     const { loginUser, authError } = useAuth();
     const location = useLocation();
     const history = useHistory();
@@ -33,14 +32,11 @@ const Login = () => {
             return ;            
         }
 
-
         loginUser(loginData.email, loginData.password, location, history);
 
-        // setPopupData({
-        //     'show':true,
-        //     'message': 'Login successfully'
-        // });
-       // console.log(popup);
+        if(authError){
+            alert(authError);
+        }
 
     }
 

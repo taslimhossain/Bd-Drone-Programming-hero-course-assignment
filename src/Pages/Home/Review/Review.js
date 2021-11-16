@@ -1,18 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { GetReview } from '../../../hooks/action';
-import reviews from '../../Home/Review/review.json'
 
 const Review = () => {
-    const [rating, setRating] = useState(0);
 
     const reviews = GetReview();
 
     const StarRating = (star) => {
         return (
           <>
-            {[...Array(parseInt(star))].map((star) => {
+            {[...Array(parseInt(star))].map((star, index) => {
               return (
-                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill" key={index}></i>
               );
             })}
           </>
