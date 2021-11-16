@@ -10,7 +10,7 @@ const Register = () => {
     const [regData, setRegData] = useState({});
     const [popup, setPopupData] = useState({'show':false});
 
-    const { user, registerUser, isLoading, authError } = useAuth();
+    const { registerUser, authError } = useAuth();
 
     const history = useHistory();
 

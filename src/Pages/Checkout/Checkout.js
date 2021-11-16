@@ -1,14 +1,30 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { useParams } from 'react-router';
 import Popup from '../../components/Popup';
 import TitleBar from '../../components/TitleBar';
+import { GetDrone } from '../../hooks/action';
+import apiurl from '../../hooks/apiUrl';
+import useAuth from '../../hooks/useAuth';
 import product from '../Products/products.json'
 
 const Checkout = () => {
     const {id} = useParams();
-    const singleProduct = product.find( product => product.id === parseInt(id));
+    const { user } = useAuth();
+    const url = apiurl();
+    const singleProduct = GetDrone(id);
 
-    const [orderData, setOrderData] = useState({});
+    const [orderData, setOrderData] = useState({
+        'firstname' : user?.displayName ? user.displayName : '',
+        'lastname'     : '',
+        'email'     : user?.email ? user.email : '',
+        'mobile'     : '',
+        'address'     : '',
+        'address_2'     : '',
+        'state'     : '',
+        'zipcode'     : '',
+        'country'     : '',
+    });
     const [popup, setPopupData] = useState({'show':false});
 
     // Checkout field value
@@ -24,8 +40,9 @@ const Checkout = () => {
     // Handle order
     const handleOrder = e => {
         e.preventDefault();
-        console.log('hi')
+        setPopupData({'show':false});  
 
+        console.log(orderData)
         if( !orderData.mobile || !orderData.email ){
             setPopupData({
                 'show':true,
@@ -33,14 +50,29 @@ const Checkout = () => {
             });
             return ;   
         }
+   
+        orderData['product'] = {
+            'id' : singleProduct._id,
+            'title' : singleProduct.title,
+            'price' : singleProduct.price,
+            'photo' : singleProduct.photo,
+        }
+       console.log(orderData);
 
-        setPopupData({
-            'show':true,
-            'message': 'Order successfully'
-        });
-
-        document.getElementById('ordersubmit').reset();
-       
+        axios.post(`${url}/order`, orderData)
+        .then(function (res) {
+            console.log(res);
+            if( res.data.acknowledged ){
+                setPopupData({
+                    'show':true,
+                    'message': 'Your oder submited succeffully'
+                });
+                document.getElementById('ordersubmit').reset();
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        }); 
     }
 
     
@@ -51,14 +83,16 @@ const Checkout = () => {
             <div className="container w-75">
                 <div className="row mt-5">
                     <div className="col-md-5">
-                        <div>
-                            <h2 className="fw-bold mb-2">{singleProduct.title}</h2>
-                            <p className="card-text mb-0"> <span className="fw-bold">Range :</span> {singleProduct.range}</p>
-                            <p className="card-text  mb-0"><span className="fw-bold">Flight Time:</span> {singleProduct.flightime}</p>
-                            <p className="fs-4 fw-bold mb-0 text-primary"> <span className="text-black">Price: </span> {singleProduct.price}$</p>
-                            <p className="mt-2">{singleProduct.description}</p>
-                            <img src={`/${singleProduct.photo}`} alt={singleProduct.title} className="my-3"/>
-                        </div>
+                       { singleProduct ?  
+                            <div>
+                                <h2 className="fw-bold mb-2">{singleProduct.title}</h2>
+                                <p className="card-text mb-0"> <span className="fw-bold">Range :</span> {singleProduct.range}</p>
+                                <p className="card-text  mb-0"><span className="fw-bold">Flight Time:</span> {singleProduct.flightime}</p>
+                                <p className="fs-4 fw-bold mb-0 text-primary"> <span className="text-black">Price: </span> {singleProduct.price}$</p>
+                                <p className="mt-2">{singleProduct.description}</p>
+                                <img src={`${singleProduct.photo}`} alt={singleProduct.title} className="my-3"/>
+                            </div> : <p>Loading</p> 
+                        }
                     </div>
 
                     <div className="col-md-7">
@@ -67,7 +101,7 @@ const Checkout = () => {
                             <div className="row g-3">
                                 <div className="col-sm-6">
                                     <label htmlFor="firstName" className="form-label">First name</label>
-                                    <input type="text" name="firstname" onChange={handleOnChange} defaultValue='' className="form-control" id="firstName" placeholder="First name"/>
+                                    <input type="text" name="firstname" onChange={handleOnChange} defaultValue={user?.displayName} className="form-control" id="firstName" placeholder="First name"/>
                                 </div>
 
                                 <div className="col-sm-6">
@@ -77,7 +111,7 @@ const Checkout = () => {
 
                                 <div className="col-12">
                                     <label htmlFor="email" className="form-label">Email</label>
-                                    <input type="email" name="email" onChange={handleOnChange} defaultValue='' className="form-control" id="email" placeholder="you@example.com" required="" />
+                                    <input type="email" name="email" onChange={handleOnChange} defaultValue={user?.email} className="form-control" id="email" placeholder="you@example.com" required="" />
                                 </div>
 
                                 <div className="col-12">

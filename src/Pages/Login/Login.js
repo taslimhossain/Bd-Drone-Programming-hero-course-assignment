@@ -10,7 +10,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState({});
     const [popup, setPopupData] = useState({'show':false});
 
-    const { user, loginUser, isLoading, authError } = useAuth();
+    const { loginUser, authError } = useAuth();
     const location = useLocation();
     const history = useHistory();
 
@@ -43,7 +43,6 @@ const Login = () => {
        // console.log(popup);
 
     }
-    console.log(popup);
 
     return (
         <>

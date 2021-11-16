@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { GetReview } from '../../../hooks/action';
 import reviews from '../../Home/Review/review.json'
 
 const Review = () => {
+    const [rating, setRating] = useState(0);
+
+    const reviews = GetReview();
+
+    const StarRating = (star) => {
+        return (
+          <>
+            {[...Array(parseInt(star))].map((star) => {
+              return (
+                <i className="bi bi-star-fill"></i>
+              );
+            })}
+          </>
+        );
+      };
 
     return (
         <>
-            <section className="review-area pt-5 bg-light">
+            <section className="review-area py-5 bg-light">
                 <div className="container">
 
                     <div className="row pb-4">
@@ -17,25 +33,22 @@ const Review = () => {
                     
                     <div className="row">
                         {
-                            reviews.map(review => ( 
-                                <div className="col-lg-4 col-md-4 mb-3" key={review.id} >
+                            reviews? reviews.map(review => ( 
+                                <div className="col-lg-4 col-md-4 mb-3" key={review._id} >
                                     <div className="card">
                                         <div className="card-body">
-                                            <p>{ review.messages }</p>
+                                            <p>{ review.description }</p>
                                             <div className="d-flex align-items-center">
-                                                <img src="images/review/user1.png" className="col-6 review-photo rounded-circle" alt= { review.name } />
+                                                <img src={ review.photo } className="col-6 review-photo rounded-circle" alt= { review.name } />
                                                 <div>
                                                     <h5 className="card-title"> { review.name } </h5>
-                                                    <h6 className="card-subtitle mb-2 text-muted">
-                                                        { review.designation }
-                                                    </h6>
-                                                    <p className="m-0 p-0"> <i class="bi bi-star-fill"></i> { review.rating } </p>
+                                                    <p className="align-items-center d-flex m-0 p-0 text-primary"> <span className="fs-4 me-2">{ review.star }</span> { StarRating(review.star) } </p>
                                                 </div>
                                             </div>                                            
                                         </div>
                                     </div>
                                 </div>
-                            ))
+                            )) : <p>Loading...</p>
                         }
                     </div>
                 </div>

@@ -7,11 +7,8 @@ const Popup = ({data}) => {
         if(data.show){
             const popupButton = document.getElementById('popupbutton');
             popupButton.click();
-            
         }
     }, [data.show])
-
-
 
     return (
         <>
@@ -23,7 +20,7 @@ const Popup = ({data}) => {
                     {data.message}
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" id="closePopup">Close</button>
                 </div>
                 </div>
             </div>

@@ -4,7 +4,6 @@ import useAuth from './../hooks/useAuth';
 
 const Header = () => {
     const { user, logout } = useAuth();
-    console.log('userinfo', user)
     return (
         <header className="header-top pt-3">
             <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
@@ -29,7 +28,7 @@ const Header = () => {
                             user?.email ?
                             <>
                             <li className="nav-item"><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
-                            <button type="button" onClick={logout} class="btn btn-link text-white">Logout</button>
+                            <button type="button" onClick={logout} className="btn btn-link text-white">Logout</button>
                             </>
                             :
                             <li className="nav-item"><Link to="/login" className="nav-link">Login</Link></li>

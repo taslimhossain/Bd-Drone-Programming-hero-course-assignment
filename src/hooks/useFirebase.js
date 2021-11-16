@@ -1,6 +1,7 @@
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
 import { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, updateProfile, getIdToken, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile, getIdToken, signOut } from "firebase/auth";
+import apiurl from "./apiUrl";
 
 
 // initialize firebase app
@@ -12,10 +13,10 @@ const useFirebase = () => {
     const [authError, setAuthError] = useState('');
     const [admin, setAdmin] = useState(false);
     const [token, setToken] = useState('');
+    const serverUrl = apiurl();
 
     const auth = getAuth();
-    const googleProvider = new GoogleAuthProvider();
-
+  
     const registerUser = (email, password, name, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
@@ -73,7 +74,7 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-        fetch(`https://stark-caverns-04377.herokuapp.com/users/${user.email}`)
+        fetch(`${serverUrl}/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
@@ -90,7 +91,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('https://stark-caverns-04377.herokuapp.com/users', {
+        fetch(`${serverUrl}/users`, {
             method: method,
             headers: {
                 'content-type': 'application/json'

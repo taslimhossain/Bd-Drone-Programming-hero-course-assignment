@@ -3,9 +3,12 @@ import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import TitleBar from '../../../components/TitleBar'
 import useAuth from '../../../hooks/useAuth';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import AddProductDashboard from '../AddProductDashboard/AddProductDashboard';
 import HomeDashboard from '../HomeDashboard/HomeDashboard';
+import MakeAdminDashboard from '../MakeAdminDashboard/MakeAdminDashboard';
 import MyOrderDashboard from '../MyOrderDashboard/MyOrderDashboard';
 import OrderDashboard from '../OrderDashboard/OrderDashboard';
+import PayDashboard from '../PayDashboard/PayDashboard';
 import ReviewDashboard from '../ReviewDashboard/ReviewDashboard';
 
 const Dashboard = () => {
@@ -17,16 +20,19 @@ const Dashboard = () => {
     <>
         <li className="nav-item"><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
         {admin && <>
-          <li className="nav-item"><Link to="/addProduct" className="nav-link">Add A Product</Link></li>
-          <li className="nav-item"><Link to="/manageProduct" className="nav-link">Manage Products</Link></li>
-          <li className="nav-item"><Link to="/makeAdmin" className="nav-link">Make Admin</Link></li>
-          <li className="nav-item"><Link to="/manageOrder" className="nav-link">Manage All Orders</Link></li>
+          <li className="nav-item"><Link to={`${url}/addProduct`} className="nav-link">Add A Product</Link></li>
+          <li className="nav-item"><Link to={`${url}/manageProduct`} className="nav-link">Manage Products</Link></li>
+          <li className="nav-item"><Link to={`${url}/makeAdmin`} className="nav-link">Make Admin</Link></li>
+          <li className="nav-item"><Link to={`${url}/manageOrder`} className="nav-link">Manage All Orders</Link></li>
           </>
         }
+        {!admin && <>
           <li className="nav-item"><Link to={`${url}/myOrder`} className="nav-link">My Orders</Link></li>
           <li className="nav-item"><Link to={`${url}/review`} className="nav-link">Review</Link></li>
           <li className="nav-item"><Link to={`${url}/pay`} className="nav-link">Pay</Link></li>
-          <li className="nav-item"><button type="button" onClick={logout} class="btn btn-link text-black">Logout</button></li>
+          </>
+        }
+          <li className="nav-item"><button type="button" onClick={logout} className="btn btn-link text-black">Logout</button></li>
     </>
   )
 
@@ -61,12 +67,22 @@ const Dashboard = () => {
                         <ReviewDashboard />
                     </Route>
 
+                    <Route path={`${path}/pay`}  >
+                        <PayDashboard />
+                    </Route>
+
+
+                    <AdminRoute path={`${path}/addProduct`}  >
+                        <AddProductDashboard />
+                    </AdminRoute>
+
                     <AdminRoute path={`${path}/orders`}  >
                         <OrderDashboard />
                     </AdminRoute>
-                    <AdminRoute path={`${path}/makeAdmin`}>
-                        <HomeDashboard />
-                    </AdminRoute>
+
+                    <Route path={`${path}/makeAdmin`}>
+                        <MakeAdminDashboard />
+                    </Route>
                     <AdminRoute path={`${path}/addDoctor`}>
                         <HomeDashboard />
                     </AdminRoute>

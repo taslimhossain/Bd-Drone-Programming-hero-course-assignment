@@ -1,9 +1,15 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { GetDrones } from '../../../hooks/action';
+import apiurl from '../../../hooks/apiUrl';
 import ProductCard from '../../Products/ProductCard'
 import products from '../../Products/products.json'
 
 const Products = () => {
-    const dbproduct = products.slice(0,3)
+
+    const products = GetDrones();
+    const dbproduct = products.slice(0,6)
+
     return (
         <>
             <section className="products-area pt-5">
@@ -18,11 +24,12 @@ const Products = () => {
                     
                     <div className="row">
                         {
-                            dbproduct.map( product => (
-                                <div className="col-lg-4 col-md-6 mb-4" key={product.id}>
+                            dbproduct? dbproduct.map( product => ( 
+                                <div className="col-lg-4 col-md-6 mb-4" key={product._id}>
                                     <ProductCard product= {product} />
                                 </div>
-                            ))
+                            )) :
+                            <p>Loading...</p>
                         }
                     </div>
                 </div>
